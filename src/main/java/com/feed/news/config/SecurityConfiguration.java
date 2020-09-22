@@ -42,17 +42,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                //Доступ только для не зарегистрированных пользователей
                 .antMatchers("/registration","/forgot-password","/reset-password","/confirm-account").permitAll()
-                //Доступ разрешен всем пользователей
                 .antMatchers("/", "/resources/**").permitAll()
-                //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated();
         http
-                //Настройка для входа в систему
                 .formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                //Перенарпавление на главную страницу после успешного входа
                 .defaultSuccessUrl("/news_feed")
                 .usernameParameter("email")
                 .passwordParameter("password")
@@ -61,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/")
-                .and().csrf().disable(); // disable CSRF
+                .and().csrf().disable();
 
         http
                 .rememberMe()
