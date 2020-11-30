@@ -2,6 +2,7 @@ package com.feed.news.controller;
 
 
 import com.feed.news.entity.Mail;
+import com.feed.news.security.entitiy.Status;
 import com.feed.news.entity.db.ConfirmationToken;
 import com.feed.news.entity.db.XUser;
 import com.feed.news.repository.ArticleRepo;
@@ -23,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.Optional;
 
 @Log4j2
@@ -57,6 +57,11 @@ public class UserController {
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
+        XUser xUser= new XUser();
+        switch (xUser.getStatus()){
+            case CONFIRMED:
+                userRepository.findByEmail(xUser.getEmail());
+        }
         modelAndView.setViewName("login");
         return modelAndView;
     }
@@ -107,6 +112,7 @@ public class UserController {
 
 
 
+
             modelAndView.addObject("successMessage", "User has been registered successfully.\n A verification email has been sent to "+user.getEmail());
         }
         modelAndView.setViewName("registration");
@@ -122,6 +128,7 @@ public class UserController {
         {
             XUser user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
             user.setEnabled(true);
+            user.setStatus(Status.CONFIRMED);
             userRepository.save(user);
             modelAndView.setViewName("login");
             modelAndView.addObject("confirmMessage", "Congratulations! Your account has been activated and email is verified! Please Login");

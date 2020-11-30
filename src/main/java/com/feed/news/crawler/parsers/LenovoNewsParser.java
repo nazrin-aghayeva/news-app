@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LenovaNewsParser  implements JsoupParser {
+public class LenovoNewsParser implements JsoupParser {
 
     List<Article> articles = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class LenovaNewsParser  implements JsoupParser {
                 String image = element.select(".card-image").first().select("img").attr("src");
                 LocalDate date = convertStringToDate(element.select(".card-date").text(), dateTimeForm.SIMPLE_MONTH_FORMAT);
 
-                articles.add(new Article(header, content, link, image, date, Website.LenovaNews));
+                articles.add(new Article(header, content, link, image, date, Website.LenovoNews));
 
             }
         } catch (NullPointerException e) {

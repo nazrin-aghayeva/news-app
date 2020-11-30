@@ -29,9 +29,9 @@ spring:
     banner-mode: off
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/best_commerce
     username: postgres
-    password: dreamgirl15
+    password: secret
 
 # ===============================
 # = JPA configurations

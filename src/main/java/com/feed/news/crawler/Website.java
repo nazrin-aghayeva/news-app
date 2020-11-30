@@ -1,7 +1,6 @@
 package com.feed.news.crawler;
 
 import com.feed.news.crawler.parsers.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 public enum Website {
@@ -11,7 +10,7 @@ public enum Website {
     UberGizmo(new UberGizmoParser()),
     DroidLife(new DroidLifeParser()),
     TechStartups(new TechStartupsParser()),
-    LenovaNews(new LenovaNewsParser()),
+    LenovoNews(new LenovoNewsParser()),
     Insider(new InsiderParser()),
     HTCNews(new HTCNewsParser()),
     DigitIn(new DigitInParser()),

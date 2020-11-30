@@ -2,6 +2,7 @@ package com.feed.news.entity.db;
 
 import com.feed.news.entity.News;
 import com.feed.news.entity.Role;
+import com.feed.news.security.entitiy.Status;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +49,10 @@ public class XUser {
     @Column(length = 32, columnDefinition = "varchar(32) default 'USER'")
     @Enumerated(EnumType.STRING)
     Role role=Role.USER;
+
+    @Column(length = 32, columnDefinition = "varchar(32)")
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private Set<News> news;

@@ -74,7 +74,7 @@ public CommandLineRunner add_news(){
                     ,"TechStartups - Coverage of Technology News, technology startups, Emerging technology, venture capital funding, and Silicon Valley"
                     ,convertImagetoByteArray("src/main/resources/static/img/techstartups.com-logo-v3.png")),
 
-                    new News("LenovaNews","https://news.lenovo.com/pressroom/press-releases/"
+                    new News("LenovoNews","https://news.lenovo.com/pressroom/press-releases/"
                     ,"Lenovo's official site for press materials and original stories about the vision and passion behind the technology."
                     ,convertImagetoByteArray("src/main/resources/static/img/lenovo2_logo.png")),
 

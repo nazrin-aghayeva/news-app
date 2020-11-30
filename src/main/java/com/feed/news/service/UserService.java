@@ -1,6 +1,7 @@
 package com.feed.news.service;
 
 
+import com.feed.news.security.entitiy.Status;
 import com.feed.news.entity.db.XUser;
 import com.feed.news.repository.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,6 +28,7 @@ public class UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setConfirm_password(bCryptPasswordEncoder.encode(user.getConfirm_password()));
         user.setActive(1);
+        user.setStatus(Status.REGISTERED);
         return userRepo.save(user);
     }
 
